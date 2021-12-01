@@ -10,8 +10,7 @@ int main()
 	std::copy(std::istream_iterator<int>(std::cin), std::istream_iterator<int>(), std::back_inserter(input));
 
 	auto it = input.begin();
-	auto end = it;
-	std::advance(end, 3);
+	auto end = std::next(end, 3);
 	int previous = std::accumulate(it, end, 0);
 	int current;
 	int count = 0;
