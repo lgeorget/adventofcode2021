@@ -9,18 +9,11 @@ int main()
 	std::vector<int> input;
 	std::copy(std::istream_iterator<int>(std::cin), std::istream_iterator<int>(), std::back_inserter(input));
 
-	auto it = input.begin();
-	auto end = std::next(end, 3);
-	int previous = std::accumulate(it, end, 0);
-	int current;
 	int count = 0;
-
-	do {
-		++it;
-		++end;
-		current = std::accumulate(it, end, 0);
-		count += current > previous;
-		previous = current;
-	} while (end != input.end());
+	for (auto windowBegin = input.begin(), windowEnd = std::next(input.begin(), 3) ;
+	     windowEnd != input.end() ;
+	     ++windowBegin, ++windowEnd) {
+		count += *windowEnd > *windowBegin;
+	}
 	std::cout << count << std::endl;
 }
