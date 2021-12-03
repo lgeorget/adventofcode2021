@@ -19,16 +19,6 @@ int main()
 		  std::back_inserter(input));
 
 	int length = input.front().length();
-	int count = input.size();
-
-	std::vector<int> ones(length);
-	for (int i=0 ; i<length ; i++) {
-		ones[i] = std::count_if(
-			input.begin(), input.end(),
-			[i](const std::string& s) { return s[i] == '1'; }
-		);
-	}
-
 
 	auto bOxygen = input.begin();
 	auto eOxygen = input.end();
@@ -59,11 +49,6 @@ int main()
 			eCo2 = std::partition(bCo2, eCo2,
 				[i, minor](const std::string& s) { return s[i] == minor; });
 		}
-
-		std::cout << "remaining candidates for oxygen: " << "\n";
-		std::copy(bOxygen, eOxygen, std::ostream_iterator<std::string>(std::cout, "\n"));
-		std::cout << "remaining candidates for CO2: " << "\n";
-		std::copy(bCo2, eCo2, std::ostream_iterator<std::string>(std::cout, "\n"));
 	}
 
 	int oxygen = parseBinary(*bOxygen);
