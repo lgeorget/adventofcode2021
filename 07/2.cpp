@@ -48,7 +48,6 @@ int main()
 	std::vector<long> crabs;
 	std::copy(csv_iterator(std::cin), csv_iterator(),
 		  std::back_inserter(crabs));
-	std::sort(crabs.begin(), crabs.end());
 
 	auto minmax = std::minmax_element(crabs.begin(), crabs.end());
 	long minFuel = std::numeric_limits<long>::max();
@@ -59,7 +58,6 @@ int main()
 					long distance = std::abs(element - candidate);
 					return sum + (distance * (distance + 1)) / 2;
 				});
-		std::cout << "For candidate pos " << candidate << ", we need " << fuel << " units of fuel" << std::endl;
 		if (fuel < minFuel)
 			minFuel = fuel;
 	}
