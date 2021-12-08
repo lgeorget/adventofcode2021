@@ -49,9 +49,9 @@ int main()
 	std::copy(csv_iterator(std::cin), csv_iterator(),
 		  std::back_inserter(crabs));
 
-	auto minmax = std::minmax_element(crabs.begin(), crabs.end());
+	auto [min, max] = std::minmax_element(crabs.begin(), crabs.end());
 	long minFuel = std::numeric_limits<long>::max();
-	for (long candidate = *(minmax.first) ; candidate <= *(minmax.second) ; candidate++) {
+	for (long candidate = *min ; candidate <= *max ; candidate++) {
 		long fuel = std::accumulate(crabs.begin(), crabs.end(),
 				0L,
 				[candidate](long sum, long element) {
