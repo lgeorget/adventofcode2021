@@ -53,13 +53,8 @@ int main()
 		}
 	}
 
-	// find the median, the non-obvious way
-	std::make_heap(scores.begin(), scores.end());
-	int middle = scores.size() / 2;
-	for (int i=0 ; i<middle ; i++) {
-		std::pop_heap(scores.begin(), scores.end());
-		scores.pop_back();
-	}
-
-	std::cout << scores.front() << std::endl;
+	// find the median
+	auto middle = scores.begin() + scores.size() / 2;
+	std::nth_element(scores.begin(), middle, scores.end());
+	std::cout << *middle << std::endl;
 }
