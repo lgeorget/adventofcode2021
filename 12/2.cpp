@@ -56,13 +56,13 @@ int main()
 					} else {
 						// first time we visit a single
 						// small cave twice, it's ok
-						visit.push_back({ currentPath, true, adj });
+						visit.emplace_back(currentPath, true, adj);
 					}
 				} else {
-					visit.push_back({ currentPath, alreadyVisitedTheSameSmallCaveTwice, adj });
+					visit.emplace_back(currentPath, alreadyVisitedTheSameSmallCaveTwice, adj);
 				}
 			} else {
-				visit.push_back({ currentPath, alreadyVisitedTheSameSmallCaveTwice, adj });
+				visit.emplace_back(currentPath, alreadyVisitedTheSameSmallCaveTwice, adj);
 			}
 		}
 	}

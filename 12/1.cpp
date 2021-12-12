@@ -4,6 +4,7 @@
 #include <map>
 #include <algorithm>
 #include <iterator>
+#include <tuple>
 
 using Node = std::string;
 
@@ -31,7 +32,7 @@ int main()
 	}
 
 
-	std::vector<std::pair<std::vector<Node>,Node>> visit = { std::make_pair(std::vector<Node>{}, "start") };
+	std::vector<std::tuple<std::vector<Node>,Node>> visit = { {std::vector<Node>{}, "start"} };
 	long paths = 0;
 	while (!visit.empty()) {
 		auto [currentPath, n] = std::move(visit.back());
@@ -61,7 +62,7 @@ int main()
 					continue;
 				}
 			}
-			visit.push_back(std::make_pair(currentPath, adj));
+			visit.emplace_back(currentPath, adj);
 		}
 	}
 
