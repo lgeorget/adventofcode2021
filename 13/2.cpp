@@ -113,7 +113,7 @@ int main()
 
 	for (int y=topleft.y ; y <= bottomright.y ; y++) {
 		for (int x=topleft.x ; x <= bottomright.x ; x++) {
-			std::cout << (dots.find(Point{x, y}) != dots.end() ? '#' : '.');
+			std::cout << (dots.find(Point{x, y}) != dots.end() ? "▓" : " ");
 		}
 		std::cout << "\n";
 	}
